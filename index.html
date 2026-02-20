@@ -20,14 +20,18 @@
         .driver-name { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 900; font-size: 1.1rem; color: #000; }
         .driver-phone { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 700; color: #333; }
 
-        /* നിങ്ങൾ നൽകിയ ശരിക്കുള്ള ഓട്ടോറിക്ഷ ചിഹ്നം */
-        .auto-rickshaw-icon {
-            width: 65px;
+        /* Option 2: ഓട്ടോറിക്ഷ ഐക്കൺ സ്റ്റൈൽ */
+        .auto-icon-box {
+            background: #000;
+            color: #ffde59;
+            width: 50px;
             height: 50px;
-            margin-right: 10px;
-            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M430.4 213.3c-4.4-12-14.8-20.9-27.4-23.7l-41.5-9.2-22.1-70.3c-4.3-13.8-17-23.4-31.5-23.4H134.1c-14.5 0-27.2 9.6-31.5 23.4L80.5 180.4l-41.5 9.2C26.4 192.4 16 201.3 11.6 213.3 7.2 225.3 9.4 238.6 17.5 248.6l31.5 39.4v101.4c0 14.7 12 26.6 26.7 26.6h26.7v26.7c0 14.7 12 26.7 26.7 26.7s26.7-12 26.7-26.7v-26.7h170.7v26.7c0 14.7 12 26.7 26.7 26.7s26.7-12 26.7-26.7v-26.7h26.7c14.7 0 26.7-11.9 26.7-26.6V288l31.5-39.4c8.1-10 10.3-23.3 5.9-35.3zM134.1 113.8h173.8l18.5 58.7H115.6l18.5-58.7zM92.4 205.8h257.2l12.3 33.3H80.1l12.3-33.3zm21.3 160V272.4h228.6v93.4H113.7z" fill="black"/></svg>');
-            background-repeat: no-repeat;
-            background-size: contain;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 12px;
         }
 
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 420px; margin: 0 auto; background: #000; border-radius: 35px 35px 0 0; padding: 15px; display: flex; justify-content: space-around; z-index: 50; }
@@ -54,7 +58,7 @@
 
     <div id="emergencyModal" onclick="closeEmergency()">
         <div class="bg-[#ffde59] p-8 rounded-[40px] w-full max-w-xs border-4 border-black" onclick="event.stopPropagation()">
-            <h2 class="text-2xl font-black text-center border-b-4 border-black pb-3 text-black text-black">EMERGENCY</h2>
+            <h2 class="text-2xl font-black text-center border-b-4 border-black pb-3 text-black">EMERGENCY</h2>
             <button onclick="window.location.href='tel:108'" class="w-full flex items-center justify-between bg-white p-4 mt-4 rounded-xl border-2 border-black font-black text-black"><span>AMBULANCE</span><i class="fas fa-ambulance text-red-600 text-2xl"></i></button>
             <button onclick="window.location.href='tel:100'" class="w-full flex items-center justify-between bg-white p-4 mt-2 rounded-xl border-2 border-black font-black text-black"><span>POLICE</span><i class="fas fa-shield-alt text-blue-600 text-2xl"></i></button>
             <p class="text-center font-bold text-black mt-4">അടയ്ക്കുക ✖</p>
@@ -92,7 +96,9 @@
         listDiv.innerHTML += `
             <div class="driver-card">
                 <div class="flex items-center">
-                    <div class="auto-rickshaw-icon"></div>
+                    <div class="auto-icon-box">
+                        <i class="fa-solid fa-motorcycle"></i>
+                    </div>
                     <div class="driver-info">
                         <p class="driver-name">${d.name}</p>
                         <p class="driver-phone">${d.phone}</p>
