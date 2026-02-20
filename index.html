@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palathara Gate Auto Taxi Stand</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700;1,900&display=swap');
         
@@ -61,13 +61,15 @@
             justify-content: space-between; 
         }
 
-        .driver-name { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 900; font-size: 1.1rem; color: #000; }
-        .driver-phone { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 700; color: #333; }
+        .driver-name { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 900; font-size: 1.1rem; color: #000; margin-bottom: -2px; }
+        .driver-phone { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 700; color: #333; font-size: 1rem; }
 
-        /* ഓട്ടോ ഐക്കൺ സ്റ്റൈൽ */
-        .auto-icon-box {
-            font-size: 2.5rem;
+        /* ചിഹ്നത്തിനുള്ള സ്റ്റൈൽ */
+        .auto-icon-container {
+            font-size: 2.2rem;
             color: #000;
+            width: 50px;
+            text-align: center;
             margin-right: 10px;
         }
 
@@ -94,15 +96,15 @@
         <div class="title-box">
             <h1 class="text-3xl font-black italic uppercase leading-tight">പാലത്തറ ഗേറ്റ് <br> ഓട്ടോ ടാക്സി സ്റ്റാൻഡ്</h1>
         </div>
-        <div class="mt-2 px-4">
+        <div class="mt-2 px-4 text-center">
             <span class="trusted-partner text-xl italic uppercase">Your Trusted Ride Partner</span>
         </div>
     </div>
 
     <div class="px-6 mt-8 mb-4 flex items-center">
-        <div class="h-[3px] bg-black flex-grow"></div>
-        <p class="mx-3 text-[10px] font-black uppercase italic text-black">ലഭ്യമായ ഡ്രൈവർമാർ 👇</p>
-        <div class="h-[3px] bg-black flex-grow"></div>
+        <div class="h-[3.5px] bg-black flex-grow"></div>
+        <p class="mx-3 text-[11px] font-black uppercase italic text-black">ലഭ്യമായ ഡ്രൈവർമാർ 👇</p>
+        <div class="h-[3.5px] bg-black flex-grow"></div>
     </div>
 
     <div id="driversList"></div>
@@ -144,7 +146,7 @@
         {name: "അബ്ബാസ്", phone: "9744106864"},
         {name: "വിജീഷ് (കാർത്തിക)", phone: "9946303174"},
         {name: "റസാഖ്", phone: "9995113455"},
-        {name: "പ്രസാദ് (കриന്തണ്ടൻ)", phone: "9961929035"},
+        {name: "പ്രസാദ് (കരിന്തണ്ടൻ)", phone: "9961929035"},
         {name: "മുത്തു (സഹൽ)", phone: "9846883806"},
         {name: "കുഞ്ഞിപ്പ", phone: "9995337587"},
         {name: "സിദ്ദിഖ്", phone: "9745967372"},
@@ -160,7 +162,7 @@
         listDiv.innerHTML += `
             <div class="driver-card">
                 <div class="flex items-center">
-                    <div class="auto-icon-box">
+                    <div class="auto-icon-container">
                         <i class="fa-solid fa-van-shuttle"></i>
                     </div>
                     <div class="driver-info">
