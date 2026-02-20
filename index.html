@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palathara Gate Auto Taxi Stand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700;1,900&display=swap');
+        
+        body { background-color: #ffde59; font-family: 'Segoe UI', sans-serif; color: #000; }
+        .app-container { max-width: 420px; margin: 0 auto; min-height: 100vh; padding-bottom: 110px; }
+        
+        .title-box {
+            background-color: #ffde59;
+            border: 5px solid #000;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 8px 8px 0 #000;
+            margin: 20px;
+        }
+
+        .trusted-partner {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-style: italic;
+            background: linear-gradient(45deg, #ff0000, #ff8c00, #000, #4b0082);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            animation: gradient-move 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .driver-card { 
+            background: #ffde59; 
+            border-radius: 25px; 
+            border: 3.5px solid #000; 
+            padding: 18px; 
+            margin: 0 15px 15px 15px; 
+            box-shadow: 6px 6px 0 #000; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+        }
+
+        .driver-name {
+            font-family: 'Poppins', sans-serif;
+            font-style: italic;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .driver-phone {
+            font-family: 'Poppins', sans-serif;
+            font-style: italic;
+            font-weight: 700;
+            opacity: 0.8;
+        }
+
+        .bottom-nav { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            max-width: 420px; 
+            margin: 0 auto; 
+            background: #000; 
+            border-radius: 35px 35px 0 0; 
+            padding: 15px; 
+            display: flex; 
+            justify-content: space-around; 
+            border-top: 4px solid #333;
+            z-index: 50; 
+        }
+
+        .nav-item { text-align: center; }
+        .nav-home { color: #00a2ff; } 
+        .nav-call { color: #00ff55; }
+        /* Emergency Label Style */
+        .nav-emergency { color: #ff3c00; }
+
+        #emergencyModal { 
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0,0,0,0.95); 
+            z-index: 100; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 20px; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="text-center pt-6">
+        <div class="title-box">
+            <h1 class="text-3xl font-black italic uppercase leading-tight">
+                പാലത്തറ ഗേറ്റ് <br> ഓട്ടോ ടാക്സി സ്റ്റാൻഡ്
+            </h1>
+        </div>
+        <div class="mt-2">
+            <span class="trusted-partner text-xl italic uppercase">Your Trusted Ride Partner</span>
+        </div>
+    </div>
+
+    <div class="px-6 mt-8 mb-4 flex items-center">
+        <div class="h-[3px] bg-black flex-grow"></div>
+        <p class="mx-3 text-[10px] font-black uppercase italic">ലഭ്യമായ ഡ്രൈവർമാർ 👇</p>
+        <div class="h-[3px] bg-black flex-grow"></div>
+    </div>
+
+    <div id="driversList"></div>
+
+    <div id="emergencyModal" onclick="closeEmergency()">
+        <div class="bg-[#ffde59] p-8 rounded-[40px] w-full max-w-xs space-y-5 border-4 border-black shadow-[15px_15px_0_#ff3c00]" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-black text-center italic border-b-4 border-black pb-3 uppercase">Emergency Contacts</h2>
+            <button onclick="window.location.href='tel:108'" class="w-full flex items-center justify-between bg-white p-5 rounded-2xl border-3 border-black font-black text-lg">
+                <span>AMBULANCE</span><i class="fas fa-ambulance text-red-600 text-3xl"></i>
+            </button>
+            <button onclick="window.location.href='tel:100'" class="w-full flex items-center justify-between bg-white p-5 rounded-2xl border-3 border-black font-black text-lg">
+                <span>POLICE</span><i class="fas fa-shield-alt text-blue-600 text-3xl"></i>
+            </button>
+            <button onclick="window.location.href='tel:101'" class="w-full flex items-center justify-between bg-white p-5 rounded-2xl border-3 border-black font-black text-lg">
+                <span>FIRE FORCE</span><i class="fas fa-fire text-orange-600 text-3xl"></i>
+            </button>
+            <p class="text-center font-bold text-black mt-4">CLOSE ✖</p>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item nav-home" onclick="window.location.reload()">
+            <i class="fas fa-house-chimney text-2xl"></i>
+            <p class="text-[10px] font-black mt-1">ഹോം</p>
+        </div>
+        <div class="nav-item nav-call" onclick="window.location.href='tel:8129377047'">
+            <i class="fas fa-phone-volume text-2xl animate-pulse text-white"></i>
+            <p class="text-[10px] font-black mt-1 text-white">വിളിക്കുക</p>
+        </div>
+        <div class="nav-item nav-emergency" onclick="openEmergency()">
+            <i class="fas fa-triangle-exclamation text-2xl animate-bounce"></i>
+            <p class="text-[9px] font-black mt-1 uppercase">Emergency</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const drivers = [
+        {name: "ഹനീഫ (Casper)", phone: "8129377047"},
+        {name: "ഉമ്മർ", phone: "9544257381"},
+        {name: "സുൽഫികർ", phone: "9895783735"},
+        {name: "അബ്ബാസ്", phone: "9744106864"},
+        {name: "വിജീഷ് (കാർത്തിക)", phone: "9946303174"},
+        {name: "റസാഖ്", phone: "9995113455"},
+        {name: "പ്രസാദ് (കരിന്തണ്ടൻ)", phone: "9961929035"},
+        {name: "മുത്തു (സഹൽ)", phone: "9846883806"},
+        {name: "കുഞ്ഞിപ്പ", phone: "9995337587"},
+        {name: "സിദ്ദിഖ്", phone: "9745967372"},
+        {name: "അബുടിക്ക", phone: "9745413184"},
+        {name: "രാജൻ (സീസൺ)", phone: "9539932008"},
+        {name: "അബ്ദുള്ള (ഹുബ്ബ്റസൂൽ)", phone: "8606409218"},
+        {name: "സുഭാഷ്", phone: "9846482524"},
+        {name: "വില്ലക്ക", phone: "7034082342"}
+    ];
+
+    const listDiv = document.getElementById('driversList');
+    drivers.forEach(d => {
+        listDiv.innerHTML += `
+            <div class="driver-card">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl text-black"><i class="fas fa-taxi"></i></div>
+                    <div class="driver-info">
+                        <p class="driver-name">${d.name}</p>
+                        <p class="driver-phone">${d.phone}</p>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="saveVCard('${d.name}', '${d.phone}')" class="bg-black text-[#ffde59] p-3 rounded-full border-2 border-black">
+                        <i class="fas fa-user-plus text-lg"></i>
+                    </button>
+                    <a href="tel:${d.phone}" class="bg-green-600 text-white p-3 rounded-full border-2 border-black shadow-[3px_3px_0_#000]">
+                        <i class="fas fa-phone-alt text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        `;
+    });
+
+    function saveVCard(name, phone) {
+        const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${name}\nTEL:${phone}\nEND:VCARD`;
+        const blob = new Blob([vcard], { type: "text/vcard" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = `${name}.vcf`; a.click();
+    }
+
+    function openEmergency() { document.getElementById('emergencyModal').style.display = 'flex'; }
+    function closeEmergency() { document.getElementById('emergencyModal').style.display = 'none'; }
+</script>
+</body>
+</html>
 
