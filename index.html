@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palathara Gate Auto Taxi Stand</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700;1,900&display=swap');
         
@@ -64,11 +64,11 @@
         .driver-name { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 900; font-size: 1.1rem; color: #000; }
         .driver-phone { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 700; color: #333; }
 
-        /* ഓട്ടോ എംബ്ലം സ്റ്റൈൽ */
-        .auto-emblem {
-            width: 50px;
-            height: auto;
-            object-fit: contain;
+        /* ഓട്ടോ ഐക്കൺ സ്റ്റൈൽ */
+        .auto-icon-box {
+            font-size: 2.5rem;
+            color: #000;
+            margin-right: 10px;
         }
 
         .bottom-nav { 
@@ -144,7 +144,7 @@
         {name: "അബ്ബാസ്", phone: "9744106864"},
         {name: "വിജീഷ് (കാർത്തിക)", phone: "9946303174"},
         {name: "റസാഖ്", phone: "9995113455"},
-        {name: "പ്രസാദ് (കരിന്തണ്ടൻ)", phone: "9961929035"},
+        {name: "പ്രസാദ് (കриന്തണ്ടൻ)", phone: "9961929035"},
         {name: "മുത്തു (സഹൽ)", phone: "9846883806"},
         {name: "കുഞ്ഞിപ്പ", phone: "9995337587"},
         {name: "സിദ്ദിഖ്", phone: "9745967372"},
@@ -159,8 +159,10 @@
     drivers.forEach(d => {
         listDiv.innerHTML += `
             <div class="driver-card">
-                <div class="flex items-center space-x-3">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/rickshaw.png" class="auto-emblem" alt="Auto">
+                <div class="flex items-center">
+                    <div class="auto-icon-box">
+                        <i class="fa-solid fa-van-shuttle"></i>
+                    </div>
                     <div class="driver-info">
                         <p class="driver-name">${d.name}</p>
                         <p class="driver-phone">${d.phone}</p>
