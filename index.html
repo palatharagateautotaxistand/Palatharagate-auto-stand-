@@ -20,11 +20,11 @@
         .driver-name { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 900; font-size: 1.1rem; color: #000; }
         .driver-phone { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 700; color: #333; }
 
-        /* യഥാർത്ഥ ഓട്ടോറിക്ഷയുടെ SVG രൂപം */
-        .auto-svg-icon {
-            width: 55px;
-            height: 45px;
+        /* ഓട്ടോറിക്ഷ ഇമോജി സ്റ്റൈൽ */
+        .auto-emoji {
+            font-size: 45px;
             margin-right: 12px;
+            line-height: 1;
         }
 
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 420px; margin: 0 auto; background: #000; border-radius: 35px 35px 0 0; padding: 15px; display: flex; justify-content: space-around; z-index: 50; }
@@ -37,8 +37,12 @@
 
 <div class="app-container">
     <div class="text-center pt-6">
-        <div class="title-box"><h1 class="text-3xl font-black italic uppercase text-black">പാലത്തറ ഗേറ്റ് <br> ഓട്ടോ ടാക്സി സ്റ്റാൻഡ്</h1></div>
-        <div class="mt-2 text-center"><span class="trusted-partner text-xl italic uppercase">Your Trusted Ride Partner</span></div>
+        <div class="title-box">
+            <h1 class="text-3xl font-black italic uppercase text-black">പാലത്തറ ഗേറ്റ് <br> ഓട്ടോ ടാക്സി സ്റ്റാൻഡ്</h1>
+        </div>
+        <div class="mt-2 text-center">
+            <span class="trusted-partner text-xl italic uppercase">Your Trusted Ride Partner</span>
+        </div>
     </div>
 
     <div class="px-6 mt-8 mb-4 flex items-center">
@@ -89,9 +93,7 @@
         listDiv.innerHTML += `
             <div class="driver-card">
                 <div class="flex items-center">
-                    <svg class="auto-svg-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M432,224H384V160a32,32,0,0,0-32-32H160a32,32,0,0,0-32,32v64H80a32,32,0,0,0-32,32v96a32,32,0,0,0,32,32h32v32a32,32,0,0,0,64,0V384H336v32a32,32,0,0,0,64,0V384h32a32,32,0,0,0,32-32V256A32,32,0,0,0,432,224ZM160,160H352v64H160V160Zm0,192a32,32,0,1,1,32-32A32,32,0,0,1,160,352Zm192,0a32,32,0,1,1,32-32A32,32,0,0,1,352,352Z" fill="black"/>
-                    </svg>
+                    <div class="auto-emoji">🛺</div>
                     <div class="driver-info">
                         <p class="driver-name">${d.name}</p>
                         <p class="driver-phone">${d.phone}</p>
