@@ -9,7 +9,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700;1,900&display=swap');
         
-        /* പ്രധാന മാറ്റം ഇവിടെയാണ് */
         html, body { 
             background-color: #ffde59 !important; 
             margin: 0;
@@ -34,6 +33,22 @@
             margin: 20px;
         }
 
+        .trusted-partner {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-style: italic;
+            background: linear-gradient(45deg, #ff0000, #ff8c00, #4b0082, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
         .driver-card { 
             background: #ffffff !important; 
             border-radius: 25px; 
@@ -46,8 +61,14 @@
             justify-content: space-between; 
         }
 
-        .driver-name { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 900; font-size: 1.2rem; color: #000; }
+        .driver-name { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 900; font-size: 1.1rem; color: #000; }
         .driver-phone { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 700; color: #333; }
+
+        /* പുതിയ ചിഹ്നം - കൂടുതൽ വ്യക്തതയുള്ള ടാക്സി ഐക്കൺ */
+        .auto-icon {
+            color: #000;
+            font-size: 2.2rem;
+        }
 
         .bottom-nav { 
             position: fixed; bottom: 0; left: 0; right: 0; 
@@ -72,7 +93,9 @@
         <div class="title-box">
             <h1 class="text-3xl font-black italic uppercase leading-tight">പാലത്തറ ഗേറ്റ് <br> ഓട്ടോ ടാക്സി സ്റ്റാൻഡ്</h1>
         </div>
-        <p class="font-black italic mt-2 text-black">YOUR TRUSTED RIDE PARTNER</p>
+        <div class="mt-2 px-4">
+            <span class="trusted-partner text-xl italic uppercase">Your Trusted Ride Partner</span>
+        </div>
     </div>
 
     <div class="px-6 mt-8 mb-4 flex items-center">
@@ -136,7 +159,7 @@
         listDiv.innerHTML += `
             <div class="driver-card">
                 <div class="flex items-center space-x-4">
-                    <div class="text-4xl text-black"><i class="fas fa-taxi"></i></div>
+                    <div class="auto-icon"><i class="fas fa-taxi"></i></div>
                     <div class="driver-info">
                         <p class="driver-name">${d.name}</p>
                         <p class="driver-phone">${d.phone}</p>
