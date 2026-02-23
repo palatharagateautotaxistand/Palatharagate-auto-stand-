@@ -20,17 +20,16 @@
         .driver-name { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 900; font-size: 1.1rem; color: #000; }
         .driver-phone { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 700; color: #333; }
 
-        /* ഓട്ടോറിക്ഷ ഇമോജി സ്റ്റൈൽ */
-        .auto-emoji {
-            font-size: 45px;
-            margin-right: 12px;
-            line-height: 1;
-        }
+        .auto-emoji { font-size: 45px; margin-right: 12px; line-height: 1; }
 
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 420px; margin: 0 auto; background: #000; border-radius: 35px 35px 0 0; padding: 15px; display: flex; justify-content: space-around; z-index: 50; }
         .nav-item { text-align: center; color: white; }
         .nav-emergency { color: #ff3c00; }
-        #emergencyModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        
+        /* Emergency Modal Styling */
+        #emergencyModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: #ffde59; padding: 25px; rounded: 35px; width: 100%; max-width: 320px; border: 4px solid #000; box-shadow: 8px 8px 0 #000; border-radius: 30px; }
+        .emergency-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; bg-white: white; padding: 15px; margin-top: 10px; border-radius: 15px; border: 2.5px solid #000; font-weight: 900; color: black; background: white; }
     </style>
 </head>
 <body>
@@ -54,11 +53,22 @@
     <div id="driversList"></div>
 
     <div id="emergencyModal" onclick="closeEmergency()">
-        <div class="bg-[#ffde59] p-8 rounded-[40px] w-full max-w-xs border-4 border-black" onclick="event.stopPropagation()">
+        <div class="modal-content" onclick="event.stopPropagation()">
             <h2 class="text-2xl font-black text-center border-b-4 border-black pb-3 text-black uppercase">Emergency</h2>
-            <button onclick="window.location.href='tel:108'" class="w-full flex items-center justify-between bg-white p-4 mt-4 rounded-xl border-2 border-black font-black text-black"><span>AMBULANCE</span><i class="fas fa-ambulance text-red-600 text-2xl"></i></button>
-            <button onclick="window.location.href='tel:100'" class="w-full flex items-center justify-between bg-white p-4 mt-2 rounded-xl border-2 border-black font-black text-black"><span>POLICE</span><i class="fas fa-shield-alt text-blue-600 text-2xl"></i></button>
-            <p class="text-center font-bold text-black mt-4">അടയ്ക്കുക ✖</p>
+            
+            <button onclick="window.location.href='tel:108'" class="emergency-btn">
+                <span>AMBULANCE</span><i class="fas fa-ambulance text-red-600 text-2xl"></i>
+            </button>
+            
+            <button onclick="window.location.href='tel:101'" class="emergency-btn">
+                <span>FIRE FORCE</span><i class="fas fa-fire-extinguisher text-orange-600 text-2xl"></i>
+            </button>
+            
+            <button onclick="window.location.href='tel:112'" class="emergency-btn">
+                <span>POLICE (112)</span><i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+            </button>
+            
+            <p class="text-center font-bold text-black mt-6 cursor-pointer" onclick="closeEmergency()">അടയ്ക്കുക ✖</p>
         </div>
     </div>
 
@@ -78,7 +88,7 @@
         {name: "വിജീഷ് (കാർത്തിക)", phone: "9946303174"},
         {name: "റസാഖ്", phone: "9995113455"},
         {name: "പ്രസാദ് (കരിന്തണ്ടൻ)", phone: "9961929035"},
-        {name: "മുത്തു (സഹൽ)", phone: "9846883806"},
+        {name: "മുത്തു (സহൽ)", phone: "9846883806"},
         {name: "കുഞ്ഞിപ്പ", phone: "9995337587"},
         {name: "സിദ്ദിഖ്", phone: "9745967372"},
         {name: "അബുടിക്ക", phone: "9745413184"},
